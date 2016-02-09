@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tweets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>   </th>
+      <th>User</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.message %></td>
+        <td>   </td>
+        <td>@<%= link_to tweet.user.username, show_user_path(id: tweet.user.id)%></td>
+        <td><%= link_to 'Show ', tweet,  class: "btn btn-success btn-md" %></td>
+        <td><%= link_to 'Edit ', edit_tweet_path(tweet), class: "btn btn-warning btn-sm" %></td>
+        <td><%= link_to 'Destroy ', tweet, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tweet', new_tweet_path, class: "btn btn-success" %>
